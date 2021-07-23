@@ -35,6 +35,13 @@ services:
         - 6379:6379
       networks:
         - spring-boot-oauth2
+  redis-seeder:
+      build:
+        context: ./redis-seeder
+      depends_on:
+        - redis
+      networks:
+        - spring-boot-oauth2
   # resource-owner:
       # build:
       #   context: ./resource-owner
