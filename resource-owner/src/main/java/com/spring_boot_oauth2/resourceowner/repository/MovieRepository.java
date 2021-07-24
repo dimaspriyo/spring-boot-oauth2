@@ -31,7 +31,6 @@ public class MovieRepository {
         List<Map> values = new ArrayList<>();
        Set entries =  hashOperations.getOperations().keys("movie*");
        entries.forEach(o -> {
-           System.out.println(o);
            Map<Object,Object> key =  hashOperations.entries(o);
            key.put("id",o);
            values.add(key);
