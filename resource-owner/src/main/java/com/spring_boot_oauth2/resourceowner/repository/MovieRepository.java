@@ -4,31 +4,45 @@ import com.spring_boot_oauth2.resourceowner.repository.entity.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Repository
 public class MovieRepository {
 
-    private RedisTemplate<String, Movie> redisTemplate;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     private HashOperations hashOperations;
 
-    public MovieRepository(RedisTemplate<String, Movie> redisTemplate) {
+    public MovieRepository(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
         hashOperations = redisTemplate.opsForHash();
     }
 
-    private String KEY = "Movie";
+    private String KEY = "movie";
 
-    public Map findAll(){
-        return hashOperations.entries(KEY);
+    public List<Map> findAll(){
+        List<Map> values = new ArrayList<>();
+       Set entries =  hashOperations.getOperations().keys("movie*");
+       entries.forEach(o -> {
+           System.out.println(o);
+           Map<Object,Object> key =  hashOperations.entries(o);
+           key.put("id",o);
+           values.add(key);
+       });
+            return values;
     }
 
-    public Movie findById(String id){
-        return (Movie) hashOperations.get(KEY,id);
+    public Object findById(String id){
+        Map<Object,Object> key = hashOperations.entries(id);
+        key.put("id",id);
+        return key;
     }
 
 }
