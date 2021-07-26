@@ -1,10 +1,10 @@
-package com.spring_boot_oauth2.resourceowner;
+package com.spring_boot_oauth2.resourceserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ResourceOwnerApplicationTests {
+class ResourceServerApplicationTests {
 
     @Test
     void contextLoads() {

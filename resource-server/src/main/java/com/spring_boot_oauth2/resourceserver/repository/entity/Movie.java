@@ -1,6 +1,5 @@
-package com.spring_boot_oauth2.resourceowner.repository.entity;
+package com.spring_boot_oauth2.resourceserver.repository.entity;
 
-import jdk.jfr.DataAmount;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

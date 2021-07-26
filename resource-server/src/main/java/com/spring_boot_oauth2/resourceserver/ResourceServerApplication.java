@@ -1,13 +1,13 @@
-package com.spring_boot_oauth2.resourceowner;
+package com.spring_boot_oauth2.resourceserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ResourceOwnerApplication {
+public class ResourceServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ResourceOwnerApplication.class, args);
+        SpringApplication.run(ResourceServerApplication.class, args);
     }
 
 }

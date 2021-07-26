@@ -1,34 +1,6 @@
 version: '3'
 
 services:
-  postgres:
-      image: postgres:12
-      environment:
-        POSTGRES_DB: keycloak
-        POSTGRES_USER: keycloak
-        POSTGRES_PASSWORD: keycloak
-      networks:
-        - spring-boot-oauth2
-  keycloak:
-      # build:
-      #   context: ./keycloak
-      image: jboss/keycloak
-      ports:
-        - 8080:8080
-      networks:
-        - spring-boot-oauth2
-      volumes:
-        - ./keycloak:/opt/jboss/keycloak/imports
-      environment:
-        KEYCLOAK_IMPORT: /opt/jboss/keycloak/imports/realm-export.json -Dkeycloak.profile.feature.upload_scripts=enabled          
-        DB_VENDOR: POSTGRES
-        DB_ADDR: postgres
-        DB_DATABASE: keycloak
-        DB_USER: keycloak
-        DB_SCHEMA: public
-        DB_PASSWORD: keycloak
-        KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: admin
   redis:
       build:
         context: ./redis
@@ -43,9 +15,9 @@ services:
         - redis
       networks:
         - spring-boot-oauth2
-  # resource-owner:
+  # resource-server:
       # build:
-      #   context: ./resource-owner
+      #   context: ./resource-server
       # ports:
       #   - 8000:8000
       # networks:
@@ -66,7 +38,7 @@ services:
       DB_SCHEMA: public
       DB_PASSWORD: password
       KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: Pa55w0rd
+      KEYCLOAK_PASSWORD: admin
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
     ports:

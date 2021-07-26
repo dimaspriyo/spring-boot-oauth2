@@ -1,4 +1,4 @@
-package com.spring_boot_oauth2.resourceowner.config;
+package com.spring_boot_oauth2.resourceserver.config;
 
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
@@ -6,10 +6,10 @@ import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurer
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
@@ -42,10 +42,12 @@ public class KeycloackSecurityConfig extends KeycloakWebSecurityConfigurerAdapte
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
                 .authorizeRequests()
-                .antMatchers("/movie**")
-                .hasRole("user")
+                .antMatchers(HttpMethod.GET,"/movie/id**").hasAnyRole("GET_BY_ID")
+                .antMatchers(HttpMethod.GET,"/movie").hasAnyRole("GET_ALL")
+//                .antMatchers(HttpMethod.GET,"/movie*").hasAnyRole("GET_ALL","GET_BY_ID")
                 .anyRequest()
                 .permitAll();
     }

@@ -1,6 +1,5 @@
-package com.spring_boot_oauth2.resourceowner.repository;
+package com.spring_boot_oauth2.resourceserver.repository;
 
-import com.spring_boot_oauth2.resourceowner.repository.entity.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Repository
 public class MovieRepository {

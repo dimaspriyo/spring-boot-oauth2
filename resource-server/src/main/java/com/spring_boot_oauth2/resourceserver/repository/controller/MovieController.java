@@ -1,7 +1,6 @@
-package com.spring_boot_oauth2.resourceowner.repository.controller;
+package com.spring_boot_oauth2.resourceserver.repository.controller;
 
-import com.spring_boot_oauth2.resourceowner.repository.MovieRepository;
-import com.spring_boot_oauth2.resourceowner.repository.entity.Movie;
+import com.spring_boot_oauth2.resourceserver.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -9,10 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/movie")
@@ -33,7 +28,7 @@ public class MovieController {
         return movieRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Object getById(@PathVariable("id") String id){
         return movieRepository.findById(id);
     }
