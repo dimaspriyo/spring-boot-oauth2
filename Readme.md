@@ -37,3 +37,12 @@ curl --location --request POST 'http://localhost:8081/auth/realms/personal/proto
 --data-urlencode 'password=johndoe' \
 --data-urlencode 'grant_type=password' \
 --data-urlencode 'client_id=SpringBoot'
+```
+
+
+## Reference Link
+- https://github.com/redis-developer/redis-datasets
+- https://github.com/keycloak/keycloak-containers
+- https://stackoverflow.com/questions/45279497/redis-docker-create-a-container-with-data/56696941#56696941
+- https://www.baeldung.com/spring-boot-keycloak
+- https://developers.redhat.com/blog/2020/11/24/authentication-and-authorization-using-the-keycloak-rest-api#keycloak_sso_demo
