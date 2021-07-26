@@ -27,3 +27,13 @@
 ## Run Resource Server App
 Located in `resource-server` folder
 
+## Endpoint
+- Get Token
+```
+curl --location --request POST 'http://localhost:8081/auth/realms/personal/protocol/openid-connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Cookie: JSESSIONID=5653E25A77C0CC63255B62E6405081D1.40ed8abe0b69; OAuth_Token_Request_State=022700a3-faf9-402b-9cea-4ed0ff64c445; JSESSIONID=092EF45F6A1FDF33CE70E2A074F87322' \
+--data-urlencode 'username=johndoe' \
+--data-urlencode 'password=johndoe' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'client_id=SpringBoot'
