@@ -1,8 +1,8 @@
 
 #! /bin/bash
 
-echo "Wait 10 Sec for Database to Start"
-sleep 10
+echo "Wait 60 Sec for Database to Start"
+sleep 60
 
 
 java -jar app.jar

@@ -15,13 +15,13 @@ services:
         - redis
       networks:
         - spring-boot-oauth2
-  # resource-server:
-      # build:
-      #   context: ./resource-server
-      # ports:
-      #   - 8000:8000
-      # networks:
-      #   - spring-boot-oauth2
+  resource-server:
+      build:
+        context: ./resource-server
+      ports:
+        - 8082:8082
+      networks:
+        - spring-boot-oauth2
   postgres:
     image: postgres
     environment:
