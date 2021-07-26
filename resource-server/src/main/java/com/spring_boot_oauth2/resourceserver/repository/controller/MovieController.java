@@ -23,7 +23,7 @@ public class MovieController {
 
     private static final String KEY = "Customer";
 
-    @GetMapping
+    @GetMapping("/all")
     public Object getAll(){
         return movieRepository.findAll();
     }

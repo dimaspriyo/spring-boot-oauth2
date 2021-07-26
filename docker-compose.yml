@@ -15,13 +15,13 @@ services:
         - redis
       networks:
         - spring-boot-oauth2
-  resource-server:
-      build:
-        context: ./resource-server
-      ports:
-        - 8082:8082
-      networks:
-        - spring-boot-oauth2
+  # resource-server:
+  #     build:
+  #       context: ./resource-server
+  #     ports:
+  #       - 8082:8082
+  #     networks:
+  #       - spring-boot-oauth2
   postgres:
     image: postgres
     environment:
@@ -31,6 +31,8 @@ services:
     networks:
       - spring-boot-oauth2
   keycloak:
+    # build:
+    #   context: ./keycloak
     image: quay.io/keycloak/keycloak:latest
     environment:
       DB_VENDOR: POSTGRES
@@ -39,10 +41,10 @@ services:
       DB_USER: keycloak
       DB_SCHEMA: public
       DB_PASSWORD: password
-      KEYCLOAK_USER: admin
+      KEYCLOAK_USER: admin  
       KEYCLOAK_PASSWORD: admin
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
-      #JDBC_PARAMS: "ssl=true"
+      # JDBC_PARAMS: "ssl=true"
     ports:
       - 8081:8080
     networks:

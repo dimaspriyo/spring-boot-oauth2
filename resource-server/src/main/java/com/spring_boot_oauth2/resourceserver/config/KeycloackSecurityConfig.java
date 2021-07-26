@@ -46,7 +46,7 @@ public class KeycloackSecurityConfig extends KeycloakWebSecurityConfigurerAdapte
         http
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/movie/id**").hasAnyRole("GET_BY_ID")
-                .antMatchers(HttpMethod.GET,"/movie").hasAnyRole("GET_ALL")
+                .antMatchers(HttpMethod.GET,"/movie/all").hasAnyRole("GET_ALL")
 //                .antMatchers(HttpMethod.GET,"/movie*").hasAnyRole("GET_ALL","GET_BY_ID")
                 .anyRequest()
                 .permitAll();
